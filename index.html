@@ -361,22 +361,44 @@
     .why-title { font-family: var(--font-display); color: var(--text-primary); letter-spacing: -.01em; margin-bottom: 20px; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.05; }
     .why-sub { color: var(--text-secondary); letter-spacing: -.01em; max-width: 480px; font-size: 1rem; font-weight: 400; line-height: 1.6; }
 
-    .why-cards { display: grid; grid-template-rows: auto auto; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 48px; }
-    .why-card { background: var(--surface); border: 1px solid transparent; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all var(--speed) var(--ease-out-expo); }
-    .why-card:first-child { grid-column: 1 / -1; flex-direction: row; }
-    .why-card:first-child .why-art { width: 50%; height: auto; min-height: 240px; }
-    .why-card:first-child .why-body { flex-direction: column; justify-content: center; padding: 36px 40px; display: flex; }
-    .why-card:first-child .why-card-title { font-size: 1.3rem; }
-    .why-card::before { content: ''; background: var(--accent); transform-origin: top; width: 3px; height: 100%; transition: transform .4s var(--ease-out-expo); z-index: 2; position: absolute; top: 0; left: 0; transform: scaleY(0); }
-    .why-card:hover::before { transform: scaleY(1); }
-    .why-card:hover { border-color: var(--border-hover); }
-    .why-art { width: 100%; height: 180px; position: relative; overflow: hidden; }
-    .why-art::after { content: ''; background: linear-gradient(to top, var(--surface), transparent); pointer-events: none; height: 60%; position: absolute; bottom: 0; left: 0; right: 0; }
-    .why-art img { object-fit: cover; object-position: center 20%; filter: saturate(.65) contrast(.9); width: 100%; height: 100%; transition: all var(--slow) var(--ease-out-expo); display: block; }
-    .why-card:hover .why-art img { filter: saturate(.85) contrast(.95); transform: scale(1.04); }
-    .why-body { flex: 1; padding: 24px 28px 28px; }
-    .why-card-title { font-family: var(--font-display); color: var(--text-primary); letter-spacing: 0; margin-bottom: 10px; font-size: 1.15rem; font-weight: 400; line-height: 1.2; }
-    .why-card-text { color: var(--text-secondary); letter-spacing: -.01em; font-size: .88rem; font-weight: 400; line-height: 1.55; }
+    /* Stats row replacing art cards */
+    .why-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
+    .why-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--speed) var(--ease-out-expo);
+    }
+    .why-stat::before {
+      content: '';
+      background: var(--accent);
+      width: 48px; height: 3px;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    .why-stat:hover { border-color: var(--border-hover); }
+    .why-stat-num {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--text-primary);
+      letter-spacing: -.02em;
+      margin-bottom: 14px;
+    }
+    .why-stat-label {
+      font-size: .88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      letter-spacing: -.01em;
+    }
 
     .framework-cta { background: var(--text-primary); text-align: left; padding: 48px; position: relative; overflow: hidden; }
     .framework-cta::before { content: ''; background: var(--accent); width: 48px; height: 3px; position: absolute; top: 0; left: 0; }
@@ -432,9 +454,8 @@
       .audits-grid { grid-template-columns: 1fr; }
       .audit-img-wrap { height: 200px; }
       .why-section { padding: 0 24px 80px; }
-      .why-cards { grid-template-columns: 1fr; }
-      .why-card:first-child { flex-direction: column; }
-      .why-card:first-child .why-art { width: 100%; min-height: 180px; }
+      .why-stats { grid-template-columns: 1fr; }
+      .why-stat-num { font-size: 3rem; }
       .about-section { padding: 0 24px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
       .cta-section { padding: 48px 24px; }
@@ -485,8 +506,8 @@
       <a class="audit-card" href="#awareness">
         <div class="audit-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&h=440&fit=crop&auto=format&q=80"
-            alt="Billboard advertising on city streets"
+            src="images/audit-awareness.png"
+            alt="Personal injury law firm billboard"
             loading="lazy"
           >
           <span class="audit-stage-chip">Awareness</span>
@@ -515,8 +536,8 @@
       <a class="audit-card" href="https://legalbrandgrader.vercel.app/" target="_blank">
         <div class="audit-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&h=440&fit=crop&auto=format&q=80"
-            alt="Legal brand perception — law firm credibility"
+            src="images/audit-perception.png"
+            alt="Social media presence and online reputation"
             loading="lazy"
           >
           <span class="audit-stage-chip">Perception</span>
@@ -549,8 +570,8 @@
       <a class="audit-card" href="#consideration">
         <div class="audit-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=900&h=440&fit=crop&auto=format&q=80"
-            alt="Google search and digital consideration — SEO"
+            src="images/audit-consideration.png"
+            alt="Google search results and local map pack"
             loading="lazy"
           >
           <span class="audit-stage-chip">Consideration</span>
@@ -579,8 +600,8 @@
       <a class="audit-card" href="#readiness">
         <div class="audit-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=900&h=440&fit=crop&auto=format&q=80"
-            alt="Law firm intake team and office operations"
+            src="images/audit-readiness.png"
+            alt="Legal intake CRM software dashboard"
             loading="lazy"
           >
           <span class="audit-stage-chip">Readiness</span>
@@ -618,33 +639,18 @@
       <p class="why-sub">They pour budget into Google Ads while their intake is broken. Or they fix their website while nobody can find them. These audits isolate the actual bottleneck — so you fix the right problem first.</p>
     </div>
 
-    <div class="why-cards">
-      <div class="why-card">
-        <div class="why-art">
-          <img src="https://legalbrandgrader.vercel.app/art/wanderer.jpg" alt="Wanderer above the Sea of Fog">
-        </div>
-        <div class="why-body">
-          <h3 class="why-card-title">You Can't Fix What You Can't See</h3>
-          <p class="why-card-text">Most law firms don't know which phase of the buyer journey is costing them the most. They assume it's visibility. Often it's trust. Sometimes it's the phone call that never gets answered. The audit framework surfaces exactly where the gap is — not where you think it is.</p>
-        </div>
+    <div class="why-stats">
+      <div class="why-stat">
+        <div class="why-stat-num">93%</div>
+        <div class="why-stat-label">of potential clients judge a firm before reading a single word</div>
       </div>
-      <div class="why-card">
-        <div class="why-art">
-          <img src="https://legalbrandgrader.vercel.app/art/athens.jpg" alt="School of Athens">
-        </div>
-        <div class="why-body">
-          <h3 class="why-card-title">Benchmarked Against Elite Firms</h3>
-          <p class="why-card-text">Results aren't generic scores — they're calibrated against law firms that have actually cracked client acquisition. You'll know exactly where you stand, and what the gap between you and the top firms in your market actually looks like.</p>
-        </div>
+      <div class="why-stat">
+        <div class="why-stat-num">40%</div>
+        <div class="why-stat-label">more leads converted by firms with strong brand presence</div>
       </div>
-      <div class="why-card">
-        <div class="why-art">
-          <img src="https://legalbrandgrader.vercel.app/art/venus.jpg" alt="The Birth of Venus">
-        </div>
-        <div class="why-body">
-          <h3 class="why-card-title">Built for Law Firms Specifically</h3>
-          <p class="why-card-text">Every signal, benchmark, and recommendation is built around the specific dynamics of legal — intake expectations, review platforms, LSAs, referral networks, and the trust requirements that separate legal from every other industry.</p>
-        </div>
+      <div class="why-stat">
+        <div class="why-stat-num">6×</div>
+        <div class="why-stat-label">more likely to lose a lead if you don't respond within the hour</div>
       </div>
     </div>
 
