@@ -446,6 +446,57 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo); }
     .reveal.in { opacity: 1; transform: translateY(0); }
 
+    /* ── COMING SOON MODAL ── */
+    .cs-backdrop {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(64,58,52,0.45);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s var(--ease-out-expo);
+    }
+    .cs-backdrop.open { opacity: 1; pointer-events: all; }
+    .cs-modal {
+      background: var(--surface);
+      border: 1px solid var(--border-hover);
+      padding: 48px;
+      max-width: 420px;
+      width: 90%;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(16px);
+      transition: transform .35s var(--ease-out-expo);
+    }
+    .cs-backdrop.open .cs-modal { transform: translateY(0); }
+    .cs-mark {
+      background: var(--accent);
+      width: 48px; height: 3px;
+      position: absolute; top: 0; left: 0;
+    }
+    .cs-label {
+      font-size: .58rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .cs-title {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 400;
+      letter-spacing: -.01em; line-height: 1;
+      color: var(--text-primary); margin-bottom: 16px;
+    }
+    .cs-text {
+      font-size: .9rem; color: var(--text-secondary);
+      line-height: 1.65; letter-spacing: -.01em; margin-bottom: 28px;
+    }
+    .cs-close {
+      background: var(--text-primary); color: var(--bg);
+      font-family: var(--font-body); font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      border: none; padding: 12px 28px; cursor: pointer;
+      transition: background var(--speed) var(--ease-out-expo);
+    }
+    .cs-close:hover { background: var(--accent); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       header { padding: 16px 20px; }
@@ -567,7 +618,7 @@
       </a>
 
       <!-- 03 CONSIDERATION -->
-      <a class="audit-card" href="#consideration">
+      <a class="audit-card" href="#" onclick="showComingSoon(event,'Consideration Audit')">
         <div class="audit-img-wrap">
           <img
             src="images/audit-consideration.png"
@@ -597,7 +648,7 @@
       </a>
 
       <!-- 04 READINESS -->
-      <a class="audit-card" href="#readiness">
+      <a class="audit-card" href="#" onclick="showComingSoon(event,'Readiness Audit')">
         <div class="audit-img-wrap">
           <img
             src="images/audit-readiness.png"
@@ -720,6 +771,17 @@
     </div>
   </section>
 
+  <!-- COMING SOON MODAL -->
+  <div id="comingSoonModal" class="cs-backdrop" onclick="hideComingSoon()">
+    <div class="cs-modal" onclick="event.stopPropagation()">
+      <div class="cs-mark"></div>
+      <div class="cs-label">Coming Soon</div>
+      <div class="cs-title" id="csTitle">Consideration Audit</div>
+      <p class="cs-text">This audit is currently in development. Check back soon — or start with the audits that are live now.</p>
+      <button class="cs-close" onclick="hideComingSoon()">Close</button>
+    </div>
+  </div>
+
   <footer>
     <div class="logo">
       <img src="images/logo.png" alt="LawFirmAudits" class="logo-img" style="height:22px;">
@@ -733,6 +795,16 @@
   </footer>
 
   <script>
+    function showComingSoon(e, name) {
+      e.preventDefault();
+      document.getElementById('csTitle').textContent = name;
+      document.getElementById('comingSoonModal').classList.add('open');
+    }
+    function hideComingSoon() {
+      document.getElementById('comingSoonModal').classList.remove('open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') hideComingSoon(); });
+
     // Always start at top — disable browser scroll restoration
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
