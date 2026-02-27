@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LawFirmAudits.com — Know Where Your Firm Stands</title>
+  <meta name="description" content="Four diagnostic audits that reveal exactly where your law firm is winning and losing the client acquisition game. Awareness, Perception, Consideration, Readiness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════════ */
+    :root {
+      --bg:          #0B0C0E;
+      --surface:     #111315;
+      --surface-2:   #181A1D;
+      --surface-3:   #1F2226;
+      --border:      rgba(255,255,255,0.07);
+      --border-hi:   rgba(255,255,255,0.14);
+
+      --text:        #F0EDE6;
+      --text-dim:    #8A8B8F;
+      --text-muted:  #555860;
+
+      --gold:        #C4963A;
+      --gold-light:  #D9AE58;
+      --gold-dim:    rgba(196,150,58,0.18);
+      --gold-glow:   rgba(196,150,58,0.06);
+
+      --audit-1:     #2B6B9A;   /* Awareness — blue */
+      --audit-2:     #6B4E9A;   /* Perception — purple */
+      --audit-3:     #2E7D52;   /* Consideration — green */
+      --audit-4:     #9A4E2B;   /* Readiness — ember */
+
+      --audit-1-dim: rgba(43,107,154,0.12);
+      --audit-2-dim: rgba(107,78,154,0.12);
+      --audit-3-dim: rgba(46,125,82,0.12);
+      --audit-4-dim: rgba(154,78,43,0.12);
+
+      --radius:      4px;
+      --radius-lg:   8px;
+    }
+
+    /* ══════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(11,12,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .nav-logo-name span { color: var(--gold); }
+
+    .nav-logo-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--bg) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .eyebrow-line {
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 600;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      max-width: 540px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dim);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-hi);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: var(--text);
+    }
+
+    /* Funnel diagram */
+    .hero-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 4.5rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.45s ease both;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .funnel-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .funnel-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      border: 1.5px solid;
+    }
+
+    .funnel-step:nth-child(1) .funnel-dot { background: var(--audit-1-dim); border-color: var(--audit-1); color: #7ab0d4; }
+    .funnel-step:nth-child(3) .funnel-dot { background: var(--audit-2-dim); border-color: var(--audit-2); color: #b09ad4; }
+    .funnel-step:nth-child(5) .funnel-dot { background: var(--audit-3-dim); border-color: var(--audit-3); color: #7abda0; }
+    .funnel-step:nth-child(7) .funnel-dot { background: var(--audit-4-dim); border-color: var(--audit-4); color: #d4a07a; }
+
+    .funnel-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .funnel-connector {
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--border-hi), var(--border));
+      margin-bottom: 1.5rem;
+      max-width: 60px;
+    }
+
+    /* ══════════════════════════════════════════
+       FRAMEWORK SECTION
+    ══════════════════════════════════════════ */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .framework-section {
+      padding: 5rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .framework-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .framework-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .framework-desc {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .framework-desc strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════════
+       AUDIT CARDS
+    ══════════════════════════════════════════ */
+    .audits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .audit-card {
+      background: var(--surface);
+      padding: 2.8rem 2.8rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .audit-card:nth-child(1)::before { background: var(--audit-1); }
+    .audit-card:nth-child(2)::before { background: var(--audit-2); }
+    .audit-card:nth-child(3)::before { background: var(--audit-3); }
+    .audit-card:nth-child(4)::before { background: var(--audit-4); }
+
+    .audit-card:hover { background: var(--surface-2); }
+    .audit-card:hover::before { opacity: 1; }
+
+    .audit-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .audit-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .audit-stage {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+    }
+
+    .audit-card:nth-child(1) .audit-stage { background: var(--audit-1-dim); color: #7ab0d4; }
+    .audit-card:nth-child(2) .audit-stage { background: var(--audit-2-dim); color: #b09ad4; }
+    .audit-card:nth-child(3) .audit-stage { background: var(--audit-3-dim); color: #7abda0; }
+    .audit-card:nth-child(4) .audit-stage { background: var(--audit-4-dim); color: #d4a07a; }
+
+    .audit-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .audit-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+    }
+
+    .audit-desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .audit-signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .signal-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.22rem 0.55rem;
+      border-radius: 2px;
+      background: var(--surface-3);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .audit-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .audit-cta-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .audit-card:nth-child(1) .audit-cta-text { color: #7ab0d4; }
+    .audit-card:nth-child(2) .audit-cta-text { color: #b09ad4; }
+    .audit-card:nth-child(3) .audit-cta-text { color: #7abda0; }
+    .audit-card:nth-child(4) .audit-cta-text { color: #d4a07a; }
+
+    .cta-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border-hi);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .audit-card:hover .cta-arrow {
+      transform: translateX(3px);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .cta-arrow svg { width: 12px; height: 12px; fill: none; stroke: var(--text-dim); stroke-width: 2; }
+
+    /* Perception audit — special badge */
+    .perception-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--audit-2-dim);
+      border: 1px solid rgba(107,78,154,0.3);
+      padding: 0.3rem 0.65rem;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .perception-badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #b09ad4;
+    }
+
+    .perception-badge-text {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b09ad4;
+    }
+
+    /* ══════════════════════════════════════════
+       WHY SECTION
+    ══════════════════════════════════════════ */
+    .why-section {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .why-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .why-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .why-text {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════
+       ABOUT SECTION
+    ══════════════════════════════════════════ */
+    .about-section {
+      padding: 6rem 2.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text strong { color: var(--text); }
+
+    .about-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .about-link-card:hover {
+      border-color: var(--border-hi);
+      background: var(--surface-3);
+    }
+
+    .about-link-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .about-link-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .about-link-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .badge-live { background: rgba(46,125,82,0.15); color: #7abda0; }
+    .badge-soon { background: rgba(196,150,58,0.12); color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       CTA STRIP
+    ══════════════════════════════════════════ */
+    .cta-strip {
+      padding: 7rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, black, transparent);
+    }
+
+    .cta-strip-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-strip-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-strip-sub {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-dim); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .framework-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .audits-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { justify-content: center; }
+      .audit-card { padding: 2rem 1.5rem; }
+      .hero-diagram { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-name">Law<span>Firm</span>Audits</div>
+      <div class="nav-logo-tag">By Rankings.io</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#audits">The Audits</a></li>
+      <li><a href="#why">Why It Matters</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#audits" class="nav-cta">Run an Audit</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      Four Diagnostic Audits for Law Firms
+      <div class="eyebrow-line"></div>
+    </div>
+
+    <h1 class="hero-headline">
+      Your firm is <em>invisible</em><br>in places you don't even know about yet.
+    </h1>
+
+    <p class="hero-sub">
+      Most law firms only measure what they can see. These four audits reveal every gap across the full client acquisition journey — from brand awareness to closed case.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#audits" class="btn-primary">Choose Your Audit</a>
+      <a href="#why" class="btn-secondary">See the Framework</a>
+    </div>
+
+    <div class="hero-diagram">
+      <div class="funnel-step">
+        <div class="funnel-dot">01</div>
+        <div class="funnel-label">Awareness</div>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-step">
+        <div class="funnel-dot">02</div>
+        <div class="funnel-label">Perception</div>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-step">
+        <div class="funnel-dot">03</div>
+        <div class="funnel-label">Consideration</div>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-step">
+        <div class="funnel-dot">04</div>
+        <div class="funnel-label">Readiness</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ AUDITS ═══════════════════════════ -->
+  <section id="audits" style="padding: 2rem 2.5rem 6rem; max-width: 1100px; margin: 0 auto;">
+
+    <div class="reveal">
+      <div class="section-label">The Four Audits</div>
+      <div style="max-width: 520px; margin-bottom: 3rem;">
+        <p style="font-size: 0.92rem; color: var(--text-dim); line-height: 1.7;">Each audit targets a distinct phase of how clients discover, evaluate, and hire a law firm. Run one. Run all four. Find out where you're bleeding.</p>
+      </div>
+    </div>
+
+    <div class="audits-grid reveal">
+
+      <!-- AUDIT 1: AWARENESS -->
+      <div class="audit-card" onclick="window.location='#awareness'">
+        <div class="audit-meta">
+          <span class="audit-number">01</span>
+          <span class="audit-stage">Pre-Intent</span>
+        </div>
+        <div class="audit-question">"Can people find you at all?"</div>
+        <div class="audit-name">Awareness Audit</div>
+        <div class="audit-desc">
+          Before someone even needs a lawyer — have they already absorbed your brand? This audit examines TV, billboards, sponsorships, community presence, and social following. The air cover. We scan your social media accounts and available traditional media presence to surface your strengths and blind spots.
+        </div>
+        <div class="audit-signals">
+          <span class="signal-tag">Social Media</span>
+          <span class="signal-tag">Traditional Media</span>
+          <span class="signal-tag">Sponsorships</span>
+          <span class="signal-tag">Community Presence</span>
+          <span class="signal-tag">Brand Recall</span>
+        </div>
+        <div class="audit-cta">
+          <span class="audit-cta-text">Run Awareness Audit</span>
+          <div class="cta-arrow">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT 2: PERCEPTION -->
+      <div class="audit-card" onclick="window.location='https://legalbrandgrader.com'">
+        <div class="audit-meta">
+          <span class="audit-number">02</span>
+          <span class="audit-stage">Brand Strength</span>
+        </div>
+        <div class="audit-question">"When they find you, what do they think?"</div>
+        <div class="audit-name">Perception Audit</div>
+        <div class="audit-desc">
+          Reputation, brand sentiment, review quality, website feel, messaging — a firm could be everywhere but still feel sketchy or generic. This audit analyzes how your brand lands with prospective clients: what signals trust, what raises doubt, and what's invisible entirely.
+        </div>
+        <div class="audit-signals">
+          <span class="signal-tag">Review Quality</span>
+          <span class="signal-tag">Brand Sentiment</span>
+          <span class="signal-tag">Website Feel</span>
+          <span class="signal-tag">Messaging</span>
+          <span class="signal-tag">Trust Signals</span>
+        </div>
+        <div class="perception-badge">
+          <div class="perception-badge-dot"></div>
+          <span class="perception-badge-text">Powered by LegalBrandGrader</span>
+        </div>
+        <div class="audit-cta">
+          <span class="audit-cta-text">Run Perception Audit</span>
+          <div class="cta-arrow">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT 3: CONSIDERATION -->
+      <div class="audit-card" onclick="window.location='#consideration'">
+        <div class="audit-meta">
+          <span class="audit-number">03</span>
+          <span class="audit-stage">Active Search</span>
+        </div>
+        <div class="audit-question">"When they're actively shopping, do you win?"</div>
+        <div class="audit-name">Consideration Audit</div>
+        <div class="audit-desc">
+          SEO rankings, paid search, LSAs, content depth, conversion rate optimization — the moment of intent where someone is actively comparing options. This audit reveals what's preventing buyers from seeing you first on Google, and what's stopping them from trusting you can deliver.
+        </div>
+        <div class="audit-signals">
+          <span class="signal-tag">SEO Rankings</span>
+          <span class="signal-tag">Paid Search</span>
+          <span class="signal-tag">LSAs</span>
+          <span class="signal-tag">Content Depth</span>
+          <span class="signal-tag">CRO</span>
+        </div>
+        <div class="audit-cta">
+          <span class="audit-cta-text">Run Consideration Audit</span>
+          <div class="cta-arrow">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT 4: READINESS -->
+      <div class="audit-card" onclick="window.location='#readiness'">
+        <div class="audit-meta">
+          <span class="audit-number">04</span>
+          <span class="audit-stage">Operational</span>
+        </div>
+        <div class="audit-question">"Can you actually capitalize on the leads?"</div>
+        <div class="audit-name">Readiness Audit</div>
+        <div class="audit-desc">
+          Intake process, CRM, call tracking, speed to lead, case management tech, follow-up sequences. It doesn't matter how visible you are if the phone rings six times and goes to voicemail. This audit benchmarks you against leading law firms and identifies the tools, systems, personnel, and agencies you need to reach the next level.
+        </div>
+        <div class="audit-signals">
+          <span class="signal-tag">Intake Process</span>
+          <span class="signal-tag">CRM</span>
+          <span class="signal-tag">Speed to Lead</span>
+          <span class="signal-tag">Call Tracking</span>
+          <span class="signal-tag">Follow-up</span>
+        </div>
+        <div class="audit-cta">
+          <span class="audit-cta-text">Run Readiness Audit</span>
+          <div class="cta-arrow">
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ WHY ═══════════════════════════ -->
+  <section id="why" class="why-section">
+    <div class="section-label reveal">The Framework</div>
+    <div class="reveal" style="margin-bottom: 3rem;">
+      <h2 class="framework-title" style="max-width: 560px; margin-bottom: 1rem;">Most firms are optimizing the wrong thing.</h2>
+      <p style="font-size: 0.92rem; color: var(--text-dim); line-height: 1.7; max-width: 540px;">They pour money into Google Ads while their intake is broken. Or they fix their intake while nobody can find them. These audits isolate the actual bottleneck.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">4</div>
+        <div class="why-title">Distinct Buyer Phases</div>
+        <div class="why-text">From pre-intent brand recall all the way to post-contact follow-up. Every phase has different signals and different failure modes.</div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">1</div>
+        <div class="why-title">Actual Bottleneck Found</div>
+        <div class="why-text">The audits are designed to pinpoint, not overwhelm. Walk away knowing exactly which phase is hurting your growth most — and what to fix first.</div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">0</div>
+        <div class="why-title">Generic Advice Given</div>
+        <div class="why-text">Each audit is built for law firms specifically, benchmarked against firms at your scale. Not another bloated marketing report with nothing actionable inside.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+  <section id="about" class="about-section">
+    <div class="about-inner">
+      <div class="reveal">
+        <div class="section-label">The Ecosystem</div>
+        <h2 class="about-title">Built to work together.</h2>
+        <p class="about-text">LawFirmAudits.com is the hub. Each audit connects to specialized tools and frameworks built specifically for law firm client acquisition — including <strong>LegalBrandGrader</strong>, which powers the Perception Audit.</p>
+        <p class="about-text">Together, they give you a complete picture of where your firm stands at every stage of the buyer journey. No guesswork. No generalist consultants. Just data and a clear path forward.</p>
+      </div>
+      <div class="about-links reveal">
+        <a href="https://legalbrandgrader.com" class="about-link-card">
+          <div>
+            <div class="about-link-title">LegalBrandGrader</div>
+            <div class="about-link-sub">Perception Audit — brand scoring and analysis</div>
+          </div>
+          <span class="about-link-badge badge-live">Live</span>
+        </a>
+        <div class="about-link-card" style="cursor: default;">
+          <div>
+            <div class="about-link-title">Awareness Tools</div>
+            <div class="about-link-sub">Social and traditional media presence scanner</div>
+          </div>
+          <span class="about-link-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="about-link-card" style="cursor: default;">
+          <div>
+            <div class="about-link-title">Consideration Analyzer</div>
+            <div class="about-link-sub">SEO, LSA, paid search, and CRO diagnostics</div>
+          </div>
+          <span class="about-link-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="about-link-card" style="cursor: default;">
+          <div>
+            <div class="about-link-title">Readiness Benchmarker</div>
+            <div class="about-link-sub">Intake, CRM, and speed-to-lead assessment</div>
+          </div>
+          <span class="about-link-badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ CTA STRIP ═══════════════════════════ -->
+  <section class="cta-strip">
+    <div class="cta-strip-inner reveal">
+      <h2 class="cta-strip-title">Stop guessing where<br><em style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold)">you're losing clients.</em></h2>
+      <p class="cta-strip-sub">Pick the audit that matches where you think the problem is. You might be surprised where the real gap actually lives.</p>
+      <a href="#audits" class="btn-primary">Run an Audit</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer>
+    <div class="footer-logo">Law<span>Firm</span>Audits<span style="color:var(--text-muted); font-size:0.8rem; font-family:'Epilogue',sans-serif; font-weight:400; margin-left:0.5rem; vertical-align:middle">.com</span></div>
+    <ul class="footer-links">
+      <li><a href="#audits">Audits</a></li>
+      <li><a href="https://legalbrandgrader.com">LegalBrandGrader</a></li>
+      <li><a href="https://rankings.io">Rankings.io</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Rankings.io. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Audit card click — smooth scroll to audits first if needed
+    document.querySelectorAll('.audit-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.cursor = 'pointer';
+      });
+    });
+
+    // Stagger audit cards on load
+    const cards = document.querySelectorAll('.audit-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          cards.forEach((card, i) => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, i * 100);
+          });
+          cardObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, background 0.25s';
+    });
+
+    if (cards[0]) cardObserver.observe(cards[0]);
+  </script>
+
+</body>
+</html>
