@@ -111,9 +111,10 @@
       position: sticky;
       top: 0;
     }
-    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo { display: flex; align-items: center; }
     .logo-mark { background: var(--accent); width: 8px; height: 8px; display: block; flex-shrink: 0; }
     .logo-text { font-family: var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--text-primary); font-size: .78rem; font-weight: 600; }
+    .logo-img { height: 28px; width: auto; display: block; mix-blend-mode: multiply; }
     .header-right { display: flex; align-items: center; gap: 2.5rem; }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .nav-links a { font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); transition: color var(--speed) var(--ease-out-expo); }
@@ -474,8 +475,7 @@
 
   <header>
     <div class="logo">
-      <div class="logo-mark"></div>
-      <div class="logo-text">LawFirmAudits</div>
+      <img src="images/logo.png" alt="LawFirmAudits" class="logo-img">
     </div>
     <div class="header-right">
       <ul class="nav-links">
@@ -722,8 +722,7 @@
 
   <footer>
     <div class="logo">
-      <div class="logo-mark"></div>
-      <div class="logo-text">LawFirmAudits</div>
+      <img src="images/logo.png" alt="LawFirmAudits" class="logo-img" style="height:22px;">
     </div>
     <ul class="footer-links">
       <li><a href="#audits">Audits</a></li>
