@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LawFirmAudits.com — Know Where Your Firm Stands</title>
-  <meta name="description" content="Five diagnostic audits that reveal exactly where your law firm is winning and losing the client acquisition game.">
+  <meta name="description" content="Six diagnostic audits that reveal exactly where your law firm is winning and losing the client acquisition game.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +39,9 @@
       --a5:              #c4432b;
       --a5-dim:          rgba(196,67,43,0.08);
       --a5-border:       rgba(196,67,43,0.22);
+      --a6:              #6b46c1;
+      --a6-dim:          rgba(107,70,193,0.08);
+      --a6-border:       rgba(107,70,193,0.22);
 
       --font-body:       'Plus Jakarta Sans', -apple-system, sans-serif;
       --font-display:    'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -211,18 +214,8 @@
     .audit-card:nth-child(3)::after { background: var(--a3); }
     .audit-card:nth-child(4)::after { background: var(--a4); }
     .audit-card:nth-child(5)::after { background: var(--a5); }
+    .audit-card:nth-child(6)::after { background: var(--a6); }
     .audit-card:hover::after { transform: scaleX(1); }
-
-    .audit-card:nth-child(5) {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .audit-card:nth-child(5) .audit-img-wrap { height: 100%; min-height: 280px; }
-    @media (max-width: 900px) {
-      .audit-card:nth-child(5) { grid-template-columns: 1fr; }
-      .audit-card:nth-child(5) .audit-img-wrap { min-height: 200px; }
-    }
 
     /* ── CARD IMAGE ── */
     .audit-img-wrap {
@@ -257,6 +250,7 @@
     .audit-card:nth-child(3) .audit-img-wrap::after { background: var(--a3); }
     .audit-card:nth-child(4) .audit-img-wrap::after { background: var(--a4); }
     .audit-card:nth-child(5) .audit-img-wrap::after { background: var(--a5); }
+    .audit-card:nth-child(6) .audit-img-wrap::after { background: var(--a6); }
     .audit-card:hover .audit-img-wrap::after { opacity: 0.10; }
 
     /* Stage chip floated over the image */
@@ -349,12 +343,14 @@
     .audit-card:nth-child(3) .audit-run-btn { background: var(--a3-dim); color: var(--a3); border: 1px solid var(--a3-border); }
     .audit-card:nth-child(4) .audit-run-btn { background: var(--a4-dim); color: var(--a4); border: 1px solid var(--a4-border); }
     .audit-card:nth-child(5) .audit-run-btn { background: var(--a5-dim); color: var(--a5); border: 1px solid var(--a5-border); }
+    .audit-card:nth-child(6) .audit-run-btn { background: var(--a6-dim); color: var(--a6); border: 1px solid var(--a6-border); }
 
     .audit-card:nth-child(1):hover .audit-run-btn { background: var(--a1); color: #fff; border-color: var(--a1); }
     .audit-card:nth-child(2):hover .audit-run-btn { background: var(--a2); color: #fff; border-color: var(--a2); }
     .audit-card:nth-child(3):hover .audit-run-btn { background: var(--a3); color: #fff; border-color: var(--a3); }
     .audit-card:nth-child(4):hover .audit-run-btn { background: var(--a4); color: #fff; border-color: var(--a4); }
     .audit-card:nth-child(5):hover .audit-run-btn { background: var(--a5); color: #fff; border-color: var(--a5); }
+    .audit-card:nth-child(6):hover .audit-run-btn { background: var(--a6); color: #fff; border-color: var(--a6); }
 
     .btn-arrow {
       width: 26px; height: 26px;
@@ -369,6 +365,7 @@
     .audit-card:nth-child(3) .btn-arrow { background: rgba(45,122,82,0.15); }
     .audit-card:nth-child(4) .btn-arrow { background: rgba(151,112,10,0.15); }
     .audit-card:nth-child(5) .btn-arrow { background: rgba(196,67,43,0.15); }
+    .audit-card:nth-child(6) .btn-arrow { background: rgba(107,70,193,0.15); }
     .audit-card:hover .btn-arrow {
       transform: translateX(4px);
       background: rgba(255,255,255,0.25);
@@ -561,7 +558,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Diagnostic Audits for Law Firms</div>
     <h1>Where is your firm<br><em>losing clients</em>?</h1>
-    <p class="hero-sub">Five targeted audits that expose every gap across the full client acquisition journey — from brand awareness to AI visibility to closed case.</p>
+    <p class="hero-sub">Six targeted audits that expose every gap across the full client acquisition journey — from brand awareness to AI visibility to closed case.</p>
   </div>
 
   <div class="section-line delay-1"></div>
@@ -726,6 +723,36 @@
         </div>
       </a>
 
+      <!-- 06 CONTENT -->
+      <a class="audit-card" href="#" onclick="showComingSoon(event,'Content Audit')">
+        <div class="audit-img-wrap">
+          <img
+            src="images/audit-content.png"
+            alt="Law firm blog and content strategy"
+            loading="lazy"
+          >
+          <span class="audit-stage-chip">Content</span>
+        </div>
+        <div class="audit-body">
+          <div class="audit-question">"Is your content actually working for you?"</div>
+          <div class="audit-name">Content Audit</div>
+          <p class="audit-desc">Blog posts, practice area pages, FAQs, video — most firms create content with no strategy and no measurement. This audit evaluates your content depth, topical authority, keyword coverage, and whether your content is actually driving traffic, building trust, and converting visitors into leads.</p>
+          <div class="audit-tags">
+            <span class="audit-tag">Blog Strategy</span>
+            <span class="audit-tag">Topical Authority</span>
+            <span class="audit-tag">Keyword Coverage</span>
+            <span class="audit-tag">Content Depth</span>
+            <span class="audit-tag">Conversion Copy</span>
+          </div>
+          <div class="audit-run-btn">
+            Audit my firm's content
+            <div class="btn-arrow">
+              <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 
@@ -791,6 +818,13 @@
           </div>
           <span class="eco-badge badge-live">Live</span>
         </a>
+        <div class="eco-card">
+          <div>
+            <div class="eco-title">Content Auditor</div>
+            <div class="eco-sub">Blog, topical authority &amp; keyword coverage</div>
+          </div>
+          <span class="eco-badge badge-soon">Coming Soon</span>
+        </div>
         <div class="eco-card">
           <div>
             <div class="eco-title">Consideration Analyzer</div>
