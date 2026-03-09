@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LawFirmAudits.com — Know Where Your Firm Stands</title>
-  <meta name="description" content="Four diagnostic audits that reveal exactly where your law firm is winning and losing the client acquisition game.">
+  <meta name="description" content="Five diagnostic audits that reveal exactly where your law firm is winning and losing the client acquisition game.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,6 +36,9 @@
       --a4:              #97700a;
       --a4-dim:          rgba(151,112,10,0.08);
       --a4-border:       rgba(151,112,10,0.22);
+      --a5:              #c4432b;
+      --a5-dim:          rgba(196,67,43,0.08);
+      --a5-border:       rgba(196,67,43,0.22);
 
       --font-body:       'Plus Jakarta Sans', -apple-system, sans-serif;
       --font-display:    'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -207,7 +210,19 @@
     .audit-card:nth-child(2)::after { background: var(--a2); }
     .audit-card:nth-child(3)::after { background: var(--a3); }
     .audit-card:nth-child(4)::after { background: var(--a4); }
+    .audit-card:nth-child(5)::after { background: var(--a5); }
     .audit-card:hover::after { transform: scaleX(1); }
+
+    .audit-card:nth-child(5) {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .audit-card:nth-child(5) .audit-img-wrap { height: 100%; min-height: 280px; }
+    @media (max-width: 900px) {
+      .audit-card:nth-child(5) { grid-template-columns: 1fr; }
+      .audit-card:nth-child(5) .audit-img-wrap { min-height: 200px; }
+    }
 
     /* ── CARD IMAGE ── */
     .audit-img-wrap {
@@ -241,6 +256,7 @@
     .audit-card:nth-child(2) .audit-img-wrap::after { background: var(--a2); }
     .audit-card:nth-child(3) .audit-img-wrap::after { background: var(--a3); }
     .audit-card:nth-child(4) .audit-img-wrap::after { background: var(--a4); }
+    .audit-card:nth-child(5) .audit-img-wrap::after { background: var(--a5); }
     .audit-card:hover .audit-img-wrap::after { opacity: 0.10; }
 
     /* Stage chip floated over the image */
@@ -332,11 +348,13 @@
     .audit-card:nth-child(2) .audit-run-btn { background: var(--a2-dim); color: var(--a2); border: 1px solid var(--a2-border); }
     .audit-card:nth-child(3) .audit-run-btn { background: var(--a3-dim); color: var(--a3); border: 1px solid var(--a3-border); }
     .audit-card:nth-child(4) .audit-run-btn { background: var(--a4-dim); color: var(--a4); border: 1px solid var(--a4-border); }
+    .audit-card:nth-child(5) .audit-run-btn { background: var(--a5-dim); color: var(--a5); border: 1px solid var(--a5-border); }
 
     .audit-card:nth-child(1):hover .audit-run-btn { background: var(--a1); color: #fff; border-color: var(--a1); }
     .audit-card:nth-child(2):hover .audit-run-btn { background: var(--a2); color: #fff; border-color: var(--a2); }
     .audit-card:nth-child(3):hover .audit-run-btn { background: var(--a3); color: #fff; border-color: var(--a3); }
     .audit-card:nth-child(4):hover .audit-run-btn { background: var(--a4); color: #fff; border-color: var(--a4); }
+    .audit-card:nth-child(5):hover .audit-run-btn { background: var(--a5); color: #fff; border-color: var(--a5); }
 
     .btn-arrow {
       width: 26px; height: 26px;
@@ -350,6 +368,7 @@
     .audit-card:nth-child(2) .btn-arrow { background: rgba(91,79,199,0.15); }
     .audit-card:nth-child(3) .btn-arrow { background: rgba(45,122,82,0.15); }
     .audit-card:nth-child(4) .btn-arrow { background: rgba(151,112,10,0.15); }
+    .audit-card:nth-child(5) .btn-arrow { background: rgba(196,67,43,0.15); }
     .audit-card:hover .btn-arrow {
       transform: translateX(4px);
       background: rgba(255,255,255,0.25);
@@ -542,7 +561,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Diagnostic Audits for Law Firms</div>
     <h1>Where is your firm<br><em>losing clients</em>?</h1>
-    <p class="hero-sub">Four targeted audits that expose every gap across the full client acquisition journey — from brand awareness to closed case.</p>
+    <p class="hero-sub">Five targeted audits that expose every gap across the full client acquisition journey — from brand awareness to AI visibility to closed case.</p>
   </div>
 
   <div class="section-line delay-1"></div>
@@ -677,6 +696,36 @@
         </div>
       </a>
 
+      <!-- 05 AI READINESS -->
+      <a class="audit-card" href="https://ai-readiness-grader.vercel.app" target="_blank">
+        <div class="audit-img-wrap">
+          <img
+            src="images/audit-ai-readiness.png"
+            alt="AI chatbot recommending law firms"
+            loading="lazy"
+          >
+          <span class="audit-stage-chip">AI Readiness</span>
+        </div>
+        <div class="audit-body">
+          <div class="audit-question">"When someone asks ChatGPT for a lawyer, does your firm show up?"</div>
+          <div class="audit-name">AI Readiness Audit</div>
+          <p class="audit-desc">ChatGPT, Perplexity, and Google AI Overviews are answering legal questions right now. This audit scans your site for AI discoverability, structured data, content clarity, and advanced signals like llms.txt — then scores how visible your firm is to the AI systems sending clients to your competitors.</p>
+          <div class="audit-tags">
+            <span class="audit-tag">AI Discoverability</span>
+            <span class="audit-tag">Structured Data</span>
+            <span class="audit-tag">Content Clarity</span>
+            <span class="audit-tag">llms.txt</span>
+            <span class="audit-tag">Schema Markup</span>
+          </div>
+          <div class="audit-run-btn">
+            Scan my firm's AI readiness
+            <div class="btn-arrow">
+              <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 
@@ -732,6 +781,13 @@
           <div>
             <div class="eco-title">Awareness Scanner</div>
             <div class="eco-sub">law-firm-awareness.vercel.app</div>
+          </div>
+          <span class="eco-badge badge-live">Live</span>
+        </a>
+        <a href="https://ai-readiness-grader.vercel.app" class="eco-card live">
+          <div>
+            <div class="eco-title">AI Readiness Grader</div>
+            <div class="eco-sub">ai-readiness-grader.vercel.app</div>
           </div>
           <span class="eco-badge badge-live">Live</span>
         </a>
