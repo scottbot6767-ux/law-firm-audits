@@ -429,15 +429,6 @@
     .about-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.05; letter-spacing: -.01em; margin-bottom: 20px; }
     .about-text { font-size: .92rem; color: var(--text-secondary); line-height: 1.7; letter-spacing: -.01em; margin-bottom: 16px; }
     .about-text strong { color: var(--text-primary); font-weight: 600; }
-    .ecosystem-links { display: flex; flex-direction: column; gap: 8px; }
-    .eco-card { background: var(--bg); border: 1px solid var(--border); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; transition: all var(--speed) var(--ease-out-expo); text-decoration: none; color: inherit; cursor: default; }
-    .eco-card.live { cursor: pointer; }
-    .eco-card.live:hover { border-color: var(--accent-border); }
-    .eco-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 3px; }
-    .eco-sub { font-size: .72rem; color: var(--text-tertiary); letter-spacing: .02em; font-family: var(--font-mono); }
-    .eco-badge { font-size: .55rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 10px; flex-shrink: 0; }
-    .badge-live { color: #2d7a52; background: rgba(45,122,82,0.10); border: 1px solid rgba(45,122,82,0.22); }
-    .badge-soon { color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); }
 
     /* ── BOTTOM CTA ── */
     .cta-section { background: var(--text-primary); text-align: left; padding: 80px 64px; position: relative; overflow: hidden; }
@@ -883,62 +874,6 @@
       <p class="framework-cta-sub">Get your free diagnostic in 60 seconds &uarr;</p>
     </div>
   </div>
-
-  <!-- ECOSYSTEM -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="reveal">
-        <div class="section-label">The Ecosystem</div>
-        <h2 class="about-title">Built to work together.</h2>
-        <p class="about-text">LawFirmAudits.com is the hub. Each audit connects to a dedicated tool built for that specific phase of the buyer journey. <strong>LegalBrandGrader</strong> is the first — it powers the Perception Audit and scores your firm's brand across 8 dimensions in 60 seconds.</p>
-        <p class="about-text">More tools are being built to complete the picture. When they're live, you'll find them here — each one diagnostic-grade, law-firm-specific, and built by the team at Rankings.io.</p>
-      </div>
-      <div class="ecosystem-links reveal">
-        <a href="https://perception.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">LegalBrandGrader</div>
-            <div class="eco-sub">legalbrandgrader.vercel.app</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-        <a href="https://awareness.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">Awareness Scanner</div>
-            <div class="eco-sub">law-firm-awareness.vercel.app</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-        <a href="https://ai.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">AI Readiness Grader</div>
-            <div class="eco-sub">ai-readiness-grader-zeta.vercel.app</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-        <a href="https://content.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">Content Auditor</div>
-            <div class="eco-sub">Blog, topical authority &amp; keyword coverage</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-        <a href="https://consideration.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">Consideration Audit</div>
-            <div class="eco-sub">consideration-audit.vercel.app</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-        <a href="https://acquisition.lawfirmaudits.com" class="eco-card live">
-          <div>
-            <div class="eco-title">Client Acquisition Audit</div>
-            <div class="eco-sub">client-acquisition-grader.vercel.app</div>
-          </div>
-          <span class="eco-badge badge-live">Live</span>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- BOTTOM CTA -->
   <section class="cta-section">
